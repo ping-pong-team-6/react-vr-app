@@ -6,36 +6,24 @@ import {
   Text,
   View,
 } from 'react-vr';
+import {VrLinks} from './src/links/vr-links.vr';
 
 export default class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             textColor: 'white',
+            backgroundColor: 'rgb(59,28,82)',
         };
     }
   render() {
     return (
       <View>
         <Pano source={asset('chess-world.jpg')}/>
-        <Text
-          style={{
-            backgroundColor: '#777879',
-			color: this.state.textColor,
-            fontSize: 0.8,
-            fontWeight: '400',
-            layoutOrigin: [0.5, 0.5],
-            paddingLeft: 0.2,
-            paddingRight: 0.2,
-            textAlign: 'center',
-            textAlignVertical: 'center',
-            transform: [{translate: [0, 0, -3]}],
-          }}
-          onEnter={() => this.setState({textColor: 'red'})}
-          onExit={() => this.setState({textColor: 'white'})}
-        >
-          hello
-        </Text>
+        <VrLinks
+          backgroundColor={this.state.backgroundColor}
+          color={this.state.textColor}
+        />
       </View>
     );
   }
