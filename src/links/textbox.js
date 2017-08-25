@@ -27,10 +27,16 @@ export default class TextBox extends React.Component {
 
   render() {
     return (
-      <View onInput={this.handleKey}>
+      <View 
+        onInput={this.handleKey}
+      >
         <Text
           style={{
-            backgroundColor: 'gray',
+            borderRadius: 0.2,
+            borderWidth: 0.1, 
+            borderColor: 'green',
+            backgroundColor: 'white',
+            color: 'black',
             fontSize: 0.8,
             fontWeight: '400',
             layoutOrigin: [0.5, 0.5],
