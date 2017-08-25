@@ -9,6 +9,7 @@ import {
 	Image,
 } from 'react-vr';
 import {VrLinks} from './src/links/vr-links.vr';
+import Textbox from './src/links/textbox';
 
 export default class App extends React.Component {
 	constructor(props) {
@@ -31,6 +32,7 @@ export default class App extends React.Component {
 					backgroundColor={this.state.backgroundColor}
 					color={this.state.textColor}
 				/>
+        <Textbox />
 				<VrButton
 					style={{width: 0.7}}
 					onClick={this.onAdd}>
