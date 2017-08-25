@@ -43,13 +43,16 @@ export default class App extends React.Component {
 			console.log(this.urlInput.state.value);
 			this.setState({urlInput: this.urlInput.state.value});
 		}
+    const name = this.nameInput.state.value;
+    const url = this.urlInput.state.value;
+    api.postGoLink({name, url}).then(this.getContent);
 	};
 
 	render() {
 		return (
 			<View>
 				<Pano source={asset('chess-world.jpg')}/>
-				<Textbox 
+				<Textbox
 					ref={ref => this.nameInput = ref}
 				/>
 				<Textbox
