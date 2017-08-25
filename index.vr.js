@@ -10,6 +10,7 @@ import {
 } from 'react-vr';
 import {VrLinks} from './src/links/vr-links.vr';
 import Textbox from './src/links/textbox';
+import * as api from './api';
 
 export default class App extends React.Component {
 	constructor(props) {
@@ -17,9 +18,19 @@ export default class App extends React.Component {
 		this.state = {
 			textColor: 'white',
 			backgroundColor: 'rgb(59,28,82)',
+			links: [],
 		};
 	}
+	componentDidMount = () => {
+		console.log('here');
+		this.getContent();
+	}
 
+  getContent = () => {
+	api.getLinks().then( ({links}) => {
+	  this.setState({links})
+	})
+  }
 	onAdd = () => {
 		console.log('Hello world!');
 	};
@@ -31,6 +42,7 @@ export default class App extends React.Component {
 				<VrLinks
 					backgroundColor={this.state.backgroundColor}
 					color={this.state.textColor}
+					links={this.state.links}
 				/>
         <Textbox />
 				<VrButton

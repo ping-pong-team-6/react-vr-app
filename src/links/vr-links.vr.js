@@ -8,31 +8,17 @@ import {
   VrButton,
   NativeModules,
 } from 'react-vr';
-import * as api from './api';
 
 export class VrLinks extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      links: [],
-    };
-  }
-  componentDidMount = () => {
-    console.log('here');
-    this.getContent();
-  }
-  getContent = () => {
-    api.getLinks().then( ({links}) => {
-      this.setState({links})
-    })
   }
   onClick = (url) => {
     console.log(url);
     NativeModules.LinkingManager.openURL(url);
   }
   render = () => {
-    const {links} = this.state;
-    const {color = 'white', backgroundColor = 'black'} = this.props;
+    const {links = [], color = 'white', backgroundColor = 'black'} = this.props;
     console.log(links);
     return (
       <View>
