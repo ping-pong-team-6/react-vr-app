@@ -19,6 +19,8 @@ export default class App extends React.Component {
 			textColor: 'white',
 			backgroundColor: 'rgb(59,28,82)',
 			links: [],
+			nameInput: '',
+			urlInput: '',
 		};
 	}
 	componentDidMount = () => {
@@ -33,21 +35,35 @@ export default class App extends React.Component {
   }
 	onAdd = () => {
 		console.log('Hello world!');
+		if (this.nameInput) {
+			console.log(this.nameInput.state.value);
+			this.setState({nameInput: this.nameInput.state.value})
+		}
+		if (this.urlInput) {
+			console.log(this.urlInput.state.value);
+			this.setState({urlInput: this.urlInput.state.value});
+		}
 	};
 
 	render() {
 		return (
 			<View>
 				<Pano source={asset('chess-world.jpg')}/>
+				<Textbox 
+					ref={ref => this.nameInput = ref}
+				/>
+				<Textbox
+					ref={ref => this.urlInput = ref}
+				/>
 				<VrLinks
 					backgroundColor={this.state.backgroundColor}
 					color={this.state.textColor}
 					links={this.state.links}
 				/>
-        <Textbox />
 				<VrButton
 					style={{width: 0.7}}
-					onClick={this.onAdd}>
+					onClick={this.onAdd}
+				>
 					<Image
 						style={{
 							width: 25,
